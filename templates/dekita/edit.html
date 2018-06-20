@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>dekita! - 編集画面</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    <p>dekita! - できたことをメモしよう</p>
+
+    {{ form.as_p }}
+    <input type="submit" value="edit">
+
+</form>
+
+<a href="{% url 'dekita:index' %}" >戻る</a>
+
+</body>
+</html>

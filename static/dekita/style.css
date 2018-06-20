@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* 全体 */
+.pageCover{
+    max-width: 1170px;
+    width:100%
+}
+/* ヘッダー */
+header{
+    max-width:1170px;
+    width:100%;
+
+    position:fixed;
+    z-index:10;
+
+    background-color:black;
+    color:white;
+}
+header h1{
+    text-align:center;
+}
+
+header a{
+    display:inline;
+    text-align:center;
+    color:white;
+}
+
+.todo{
+    list-style:none;
+    display:block;
+    width:600px;
+    height:20px;
+
+}
+
+
+/* 下部メニュー */
+/* */
+/* */
+/* */
+/* */
+/* */

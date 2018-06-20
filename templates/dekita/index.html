@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>dekita!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dekita/style.css' %}" />
+    <style type="text/css"></style>
+</head>
+<body>
+<div class="pageCover">
+    <header>
+        <h1>dekita!</h1>
+        <a href="{% url 'dekita:add' %}">予定の追加</a>
+    </header>
+    <div class="top-image">
+
+    </div>
+    <div class="counter-line">
+        <div class="counter-container">
+            <ul>
+                <li class="counter-item"></li>
+                <li class="counter-item"></li>
+                <li class="counter-item"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="firstMenu">
+        <h3>直近の開発予定</h3>
+        <div class="frame">
+            <ul class="aaa">
+                {% for todo in todolist %}
+                <li class="todo">
+                    {{ todo.id }} - {{ todo.todolist|linebreaksbr }}
+                <a href="{% url 'dekita:edit' todo.id %}">編集</a>
+                <a href="{% url 'dekita:done' todo.id %}">できた</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
