@@ -35,7 +35,7 @@ if "moritahiroki" in hostname:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    ALLOWED_HOSTS = [] # よくわからんけど、これも大事らしい
+    ALLOWED_HOSTS = [] 
 else:
     # 本番環境
     DEBUG = False
