@@ -1,1 +1,1 @@
-web: gunicorn アプリ名.wsgi --log-file -
+web: gunicorn dekita.wsgi --log-file -
