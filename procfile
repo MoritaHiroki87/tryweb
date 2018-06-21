@@ -1,1 +1,1 @@
-web: gunicorn afternoon-everglades-67825.wsgi --log-file -
+web: gunicorn tryweb.wsgi --log-file -
