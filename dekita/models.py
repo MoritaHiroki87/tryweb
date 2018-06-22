@@ -10,6 +10,11 @@ class DoDone(models.Model):
 class ToDoList(models.Model):
     todolist = models.CharField(max_length=200)
     created_at = models.DateTimeField(default=timezone.now)
+    # priority = models.IntegerField()
+
+    # def __init__(self):
+       # self.priority = self.id
+
 
     def __str__(self):
         return self.todolist
