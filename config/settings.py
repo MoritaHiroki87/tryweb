@@ -35,10 +35,10 @@ if "moritahiroki" in hostname:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    ALLOWED_HOSTS = [] # よくわからんけど、これも大事らしい
+    ALLOWED_HOSTS = [] 
 else:
     # 本番環境
-    DEBUG = True
+    DEBUG = False
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
@@ -54,6 +54,17 @@ else:
             },
         },
     }
+    # Database
+    # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+    # DB設定
+    import dj_database_url
+
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    db_from_env = dj_database_url.config()
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
+    ALLOWED_HOSTS = ['*']
 
 
 
@@ -99,19 +110,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-# DB設定
-import dj_database_url
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-db_from_env = dj_database_url.config()
-DATABASES = {
-    'default': dj_database_url.config()
-}
-ALLOWED_HOSTS = ['*']
 
 
 # Password validation
