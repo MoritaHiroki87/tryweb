@@ -35,8 +35,10 @@
                 {% for todo in todolist %}
                 <li class="todo">
                     {{ todo.id }} - {{ todo.todolist|linebreaksbr }}
-                <a href="{% url 'dekita:edit' todo.id %}">編集</a>
-                <a href="{% url 'dekita:done' todo.id %}">できた</a>
+                    <!-- 本当はここ、コメント部分を直にクリックできるようにして、
+                    そんで詳細ページに飛ばしたい。けどブロックでリンクみたいなのの
+                    やり方がわからない。HTMLCSS勉強する。 -->
+                    <a href="{% url 'dekita:edit' todo.id %}">編集</a>
                 </li>
                 {% endfor %}
             </ul>

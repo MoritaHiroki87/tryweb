@@ -32,20 +32,22 @@ def add(request):
 
 def edit(request, todo_id):
     try:
-        todolist = ToDoList.objects.get(id=todo_id)
+        todo = ToDoList.objects.get(id=todo_id)
     except ToDoList.DoesNotExist:
         raise Http404
 
     if request.method == 'POST':
-        form = AddForm(request.POST, instance=todolist)
+        form = AddForm(request.POST, instance=todo)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('dekita:edit',
-                                                args=(todolist.id,)))
+                                                args=(todo.id,)))
     else:
-        form = AddForm(instance=todolist)
+        form = AddForm(instance=todo)
 
-    return TemplateResponse(request, "dekita/edit.html", {"form": form})
+        return TemplateResponse(request, "dekita/edit.html", {"form": form,
+                                                              "todo": todo})
+
 
 def done(request, todo_id):
     try:
@@ -53,10 +55,10 @@ def done(request, todo_id):
     except ToDoList.DoesNotExist:
         raise Http404
 
-    #if request.method == 'POST':
+    # if request.method == 'POST':
         # todolistの内容を完了リストに移す
     todolist.delete()
     return HttpResponseRedirect(reverse('dekita:index'))
-    #else:
+    # else:
     #    return TemplateResponse(request, 'dekita:index')
 
