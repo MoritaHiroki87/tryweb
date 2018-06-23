@@ -12,24 +12,28 @@
 <div class="pageCover">
     <header>
         <h1>dekita!</h1>
-        <a href="{% url 'dekita:add' %}">予定の追加</a>
     </header>
-    <div class="top-image" style="background-image:url('{% static "header.dekita/png" %}');">
+    <div class="top-area">
 
+    </div>
+    <div class="top-image">
     </div>
     <div class="counter-line">
         <div class="counter-container">
             <ul>
-                <li class="counter-item"></li>
-                <li class="counter-item"></li>
-                <li class="counter-item"></li>
+                <li class="counter-item">dekita:</li>
+                <li class="counter-item">できた数:</li>
+                <li class="counter-item">なめこ数:</li>
             </ul>
         </div>
     </div>
 
 
-    <div class="firstMenu">
-        <h3>直近の開発予定</h3>
+    <div class="first-menu">
+        <h3>
+            予定：
+            <a href="{% url 'dekita:add' %}">追加する</a>
+        </h3>
         <div class="frame">
             <ul class="aaa">
                 {% for todo in todolist %}
