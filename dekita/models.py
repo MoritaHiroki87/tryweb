@@ -11,6 +11,8 @@ class DoDone(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.category
 
 def default_category():
     category, _ = Category.objects.get_or_create(category='default')

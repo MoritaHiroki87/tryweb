@@ -65,21 +65,37 @@ header h1{
 /* メインコンテンツ */
 .first-menu h3{
     display:block;
-    padding-left:30px;
 }
+.add-menu{
+    padding-left:30px;
+    border-bottom:1px solid gray;
+}
+.category{
 
+}
 .todo{
     list-style:none;
-    display:block;
-    width:600px;
 }
 .todo-gray{
     background-color:gray;
     color:white;
+    display:block;
+    width:600px;
+    float:left;
 }
 .todo-white{
     background-color:white;
     color:gray;
+    display:block;
+    width:600px;
+    float:left;
+}
+.edit-link{
+    display:block;
+}
+.float-clear{
+    clear:left;
+
 }
 
 /* 下部メニュー */

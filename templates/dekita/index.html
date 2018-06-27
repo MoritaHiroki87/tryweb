@@ -30,30 +30,37 @@
 
 
     <div class="first-menu">
-        <h3>
-            カテゴリ：
-            <a href="#">追加する</a>
-        </h3>
-        <h3>
-            予定：
-            <a href="{% url 'dekita:add' %}">追加する</a>
-        </h3>
+        <div class="add-menu">
+            <h3>
+                カテゴリ：
+                <a href="{% url 'dekita:add_category' %}">追加する</a>
+            </h3>
+            <h3>
+                予定：
+                <a href="{% url 'dekita:add' %}">追加する</a>
+            </h3>
+        </div>
         <div class="frame">
             <ul class="aaa">
-                {% for todo in todolist %}
+                {% for cate in category %}
+                <h2 class="category">{{ cate }}</h2>
+                {% for todo in cate.todolist_set.all %}
                 <li class="todo">
                     {% if forloop.counter0|divisibleby:"2" %}
                     <p class="todo-gray">
                         {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
                     </p>
-                    <a href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    <a class="edit-link" href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    <div class="float-clear"></div>
                     {% else %}
                     <p class="todo-white">
                         {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
                     </p>
-                    <a href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    <a class="edit-link" href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    <div class="float-clear"></div>
                     {% endif %}
                 </li>
+                {% endfor %}
                 {% endfor %}
             </ul>
         </div>

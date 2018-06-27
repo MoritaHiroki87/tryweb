@@ -1,5 +1,5 @@
 from django import forms
-from .models import ToDoList
+from .models import ToDoList, Category
 
 
 class AddForm(forms.ModelForm):
@@ -8,3 +8,11 @@ class AddForm(forms.ModelForm):
         fields = ("category",
                   "todolist",
                   "wayoflearning",)
+
+
+class AddCategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ("category",)
+
+
