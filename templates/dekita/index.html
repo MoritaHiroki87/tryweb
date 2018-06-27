@@ -31,6 +31,10 @@
 
     <div class="first-menu">
         <h3>
+            カテゴリ：
+            <a href="#">追加する</a>
+        </h3>
+        <h3>
             予定：
             <a href="{% url 'dekita:add' %}">追加する</a>
         </h3>
@@ -38,11 +42,17 @@
             <ul class="aaa">
                 {% for todo in todolist %}
                 <li class="todo">
-                    {{ todo.id }} - {{ todo.todolist|linebreaksbr }}
-                    <!-- 本当はここ、コメント部分を直にクリックできるようにして、
-                    そんで詳細ページに飛ばしたい。けどブロックでリンクみたいなのの
-                    やり方がわからない。HTMLCSS勉強する。 -->
+                    {% if forloop.counter0|divisibleby:"2" %}
+                    <p class="todo-gray">
+                        {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
+                    </p>
                     <a href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    {% else %}
+                    <p class="todo-white">
+                        {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
+                    </p>
+                    <a href="{% url 'dekita:edit' todo.id %}">編集</a>
+                    {% endif %}
                 </li>
                 {% endfor %}
             </ul>

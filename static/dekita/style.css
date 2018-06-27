@@ -24,12 +24,6 @@ header h1{
     text-align:center;
 }
 
-header a{
-    display:inline;
-    text-align:center;
-    color:white;
-}
-
 /* ヘッダーとトップ画像が被らないよう調整 */
 .top-area{
     height:100px;
@@ -78,10 +72,15 @@ header a{
     list-style:none;
     display:block;
     width:600px;
-
-
 }
-
+.todo-gray{
+    background-color:gray;
+    color:white;
+}
+.todo-white{
+    background-color:white;
+    color:gray;
+}
 
 /* 下部メニュー */
 /* */
