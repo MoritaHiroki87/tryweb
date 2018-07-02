@@ -22,7 +22,7 @@ def default_category():
 
 class ToDoList(models.Model):
     category = models.ForeignKey(
-        Category, default=default_category, on_delete=models.PROTECT)
+        Category, default=default_category, on_delete=models.CASCADE)
     todolist = models.CharField(max_length=200)
     wayoflearning = models.CharField(max_length=200, default="")
     created_at = models.DateTimeField(default=timezone.now)

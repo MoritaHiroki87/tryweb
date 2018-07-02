@@ -16,6 +16,20 @@
 
 </form>
 
+<!--  以下、カテゴリ追加画面に既存のカテゴリを並べ、
+全て編集・削除できるようにするつもりだったがうまくいかなかったため一旦コメントアウト。
+カテゴリ個々に編集削除ページを付け足すが、いつかここも実現させたい。
+
+{% for cate in form_list %}
+{{ cate.id }}
+<form action="{% url 'dekita:edit_category' cate.id %}" method="post">
+    {% csrf_token %}
+    {{ cate.as_p }}
+    <input type="submit" value="edit_category">
+</form>
+{% endfor %}
+-->
+
 <a href="{% url 'dekita:index' %}" >戻る</a>
 
 </body>

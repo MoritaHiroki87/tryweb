@@ -40,9 +40,43 @@ def add_category(request):
             form.save()
     else:
         form = AddCategoryForm()
-    context = {"form": form}
+
+    # 以下、カテゴリ追加ページで全カテゴリ編集ってのをやりたかったが無理なので取り下げ。
+    # 全カテゴリを編集可能なフォームの形で送りつける。
+    #try:
+    #    category_list = Category.objects.all()
+    #except Category.DoesNotExist:
+    #    raise Http404
+
+    #form_list = []
+    #for category in category_list:
+    #    form_list.append(AddCategoryForm(instance=category))
+
+    context = {"form": form,}
+    #           "form_list": form_list}
+    # コメントアウト終了
 
     return render(request, 'dekita/add_category.html', context)
+
+
+
+def edit_category(request, cate_id):
+    try:
+        cate = Category.objects.get(id=cate_id)
+    except Category.DoesNotExist:
+        raise Http404
+
+    if request.method == "POST":
+        form = AddCategoryForm(request.POST, instance=cate)
+        if form.is_valid:
+            form.save()
+            return HttpResponseRedirect(reverse('dekita:edit_category',
+                                         args=(cate.id,)))
+    else:
+        form = AddCategoryForm(instance=cate)
+
+    context = {"form": form,}
+    return TemplateResponse(request, "dekita/edit_category.html", context)
 
 
 def edit(request, todo_id):

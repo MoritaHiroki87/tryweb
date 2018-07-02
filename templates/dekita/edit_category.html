@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>dekita! - カテゴリ編集画面</title>
+    <!-- いつかdetail画面に変更する -->
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    <p>dekita! - カテゴリの編集</p>
+
+    {{ form.as_p }}
+    <input type="submit" value="edit_category">
+
+</form>
+
+<a href="{% url 'dekita:index' %}" >戻る</a>
+
+</body>
+</html>

@@ -43,7 +43,8 @@
         <div class="frame">
             <ul class="aaa">
                 {% for cate in category %}
-                <h2 class="category">{{ cate }}</h2>
+                <h2 class="category">{{ cate }} : </h2>
+                <a href="{% url 'dekita:edit_category' cate.id %}">編集</a>
                 {% for todo in cate.todolist_set.all %}
                 <li class="todo">
                     {% if forloop.counter0|divisibleby:"2" %}
