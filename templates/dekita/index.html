@@ -3,69 +3,58 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>dekita!</title>
+    <title>デケエ板</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'dekita/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'dekita/style.css' %}" />
     <style type="text/css"></style>
 </head>
+
+
 <body>
-<div class="pageCover">
-    <header>
-        <h1>dekita!</h1>
+    <header class="header">
+        <div class="header-wrapper clearfix">
+            <h1 class="title">デケエ板...</h1>
+            <a class="todo-add" href="{% url 'dekita:add' %}">書き込む</a>
+            <a class="category-add" href="{% url 'dekita:add_category' %}">カテゴリ追加</a>
+        </div>
     </header>
-    <div class="top-area">
 
-    </div>
-    <div class="top-image">
-    </div>
-    <div class="counter-line">
-        <div class="counter-container">
-            <ul>
-                <li class="counter-item">dekita:</li>
-                <li class="counter-item">できた数:</li>
-                <li class="counter-item">なめこ数:</li>
-            </ul>
+
+    <div class="board-wrapper">
+        <div class="board">
+            <h1 class="top-category">固定メモ</h1>
+            <a class="top-memo">
+                <p class="memo-text">
+                    今日はフロントやって、フロントやって、んで会社にメール送って、それからフロントの学んだことをある程度まとめてブログ書く？？？
+                </p>
+            </a>
         </div>
     </div>
 
 
-    <div class="first-menu">
-        <div class="add-menu">
-            <h3>
-                カテゴリ：
-                <a href="{% url 'dekita:add_category' %}">追加する</a>
-            </h3>
-            <h3>
-                予定：
-                <a href="{% url 'dekita:add' %}">追加する</a>
-            </h3>
-        </div>
-        <div class="frame">
-            <ul class="aaa">
-                {% for cate in category %}
-                <h2 class="category">{{ cate }} : </h2>
-                <a href="{% url 'dekita:edit_category' cate.id %}">編集</a>
+    <div class="wrapper">
+        <div class="main">
+            {% for cate in category %}
+            <a class="category-edit" href="{% url 'dekita:edit_category' cate.id %}">
+                <h1 class="category">{{ cate }}</h1>
+            </a>
+            <ol class="contents">
                 {% for todo in cate.todolist_set.all %}
-                <li class="todo">
-                    {% if forloop.counter0|divisibleby:"2" %}
-                    <p class="todo-gray">
-                        {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
-                    </p>
-                    <a class="edit-link" href="{% url 'dekita:edit' todo.id %}">編集</a>
-                    <div class="float-clear"></div>
-                    {% else %}
-                    <p class="todo-white">
-                        {{ forloop.counter }} - {{ todo.todolist|linebreaksbr }}
-                    </p>
-                    <a class="edit-link" href="{% url 'dekita:edit' todo.id %}">編集</a>
-                    <div class="float-clear"></div>
-                    {% endif %}
+                <li class="todo-edit">
+                    <a href="{% url 'dekita:edit' todo.id %}">
+                        <span class="todo-number"></span>
+                        <p class="todo-text">
+                            {{ todo.todolist|linebreaksbr }}
+                        </p>
+                    </a>
                 </li>
                 {% endfor %}
-                {% endfor %}
-            </ul>
+            </ol>
+            {% endfor %}
         </div>
     </div>
-</div>
+
 </body>
 </html>
+
