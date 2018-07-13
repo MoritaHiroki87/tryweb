@@ -26,6 +26,10 @@ CSS ヘッダー
  --------------------------------- */
 
 .header{
+  position: fixed;
+  z-index: 11;
+  background-color: #fff;
+
   width:100%;
   padding:10px 0 10px;
   box-sizing:0 0 10px 1px #e3e3e3;
@@ -76,7 +80,7 @@ board 用CSS
  .board-wrapper {
   width: 100%;
   background-color: #e6ecf0;
-  padding-top: 10px;
+  padding-top: 60px;
 }
 .board-wrapper .board {
   width:506px;
@@ -117,8 +121,7 @@ main用CSS
 .wrapper {
   width: 100%;
   background-color: #e6ecf0;
-  height: 800px;
-  padding-top: 10px;
+  padding: 10px 0;
 }
 .wrapper .main {
   width:506px;
