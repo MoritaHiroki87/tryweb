@@ -13,7 +13,10 @@ from dekita.forms import AddForm, AddCategoryForm, AddDoForm
 def index(request):
     todolist = ToDoList.objects.order_by("created_at")
     category = Category.objects.all()
-    do = Do.objects.get(id=1)
+    try:
+        do = Do.objects.get(id=1)
+    except:
+        do = "固定メモを書き込む"
     context = {"todolist": todolist,
                "category": category,
                "do": do}
