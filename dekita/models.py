@@ -2,17 +2,20 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-class DoDone(models.Model):
-    do_text = models.CharField(max_length=200)
-    done_text = models.CharField(max_length=200)
-    do_date = models.DateTimeField('do_date')
 
+
+class Do(models.Model):
+    do_text = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.do_text
 
 class Category(models.Model):
     category = models.CharField(max_length=30)
 
     def __str__(self):
         return self.category
+
 
 def default_category():
     category, _ = Category.objects.get_or_create(category='default')
@@ -31,6 +34,7 @@ class ToDoList(models.Model):
 
     def __str__(self):
         return self.todolist
+
 
 class DoneList(models.Model):
     done_text = models.CharField(max_length=30)

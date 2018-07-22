@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>固定メモ</title>
+</head>
+<body>
+
+
+<form action="{%url 'dekita:add_do' 1 %}" method="post">
+    {% csrf_token %}
+    <p>固定メモの編集</p>
+
+    {{ form.as_p }}
+    <input type="submit" value="メモする">
+
+</form>
+
+
+<a href="{% url 'dekita:index' %}" >戻る</a>
+
+</body>
+</html>

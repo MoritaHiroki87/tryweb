@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.http import Http404
 from django.http import HttpResponseRedirect
-from dekita.models import ToDoList, Category
-from dekita.forms import AddForm, AddCategoryForm
+from dekita.models import ToDoList, Category, Do
+from dekita.forms import AddForm, AddCategoryForm, AddDoForm
 
 
 # Create your views here.
@@ -13,8 +13,10 @@ from dekita.forms import AddForm, AddCategoryForm
 def index(request):
     todolist = ToDoList.objects.order_by("created_at")
     category = Category.objects.all()
+    do = Do.objects.get(id=1)
     context = {"todolist": todolist,
-               "category": category}
+               "category": category,
+               "do": do}
 
     return render(request, 'dekita/index.html', context)
 
@@ -58,6 +60,30 @@ def add_category(request):
 
     return render(request, 'dekita/add_category.html', context)
 
+
+def add_do(request, do_id):
+    try:
+        do = Do.objects.get(id=do_id)
+        if request.method == 'POST':
+            form = AddDoForm(request.POST, instance=do)
+            if form.is_valid:
+                form.save()
+                return HttpResponseRedirect(reverse('dekita:add_do',
+                                         args=(do.id,)))
+        else:
+            form = AddDoForm(instance=do)
+    # 初回で固定メモを作成するときはexceptの内容
+    except:
+        if request.method == "POST":
+            form = AddDoForm(request.POST)
+            if form.is_valid:
+                form.save()
+        else:
+            form = AddDoForm()
+
+    context = {"form": form,}
+
+    return render(request, 'dekita/add_do.html', context)
 
 
 def edit_category(request, cate_id):

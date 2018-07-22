@@ -24,9 +24,9 @@
     <div class="board-wrapper">
         <div class="board">
             <h1 class="top-category">固定メモ</h1>
-            <a class="top-memo">
+            <a class="top-memo" href="{% url 'dekita:add_do' 1 %}">
                 <p class="memo-text">
-                    今日はフロントやって、フロントやって、んで会社にメール送って、それからフロントの学んだことをある程度まとめてブログ書く？？？
+                    {{ do.do_text }}
                 </p>
             </a>
         </div>

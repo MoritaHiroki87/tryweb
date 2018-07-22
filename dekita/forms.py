@@ -1,5 +1,5 @@
 from django import forms
-from .models import ToDoList, Category
+from .models import ToDoList, Category, Do
 
 
 class AddForm(forms.ModelForm):
@@ -16,3 +16,7 @@ class AddCategoryForm(forms.ModelForm):
         fields = ("category",)
 
 
+class AddDoForm(forms.ModelForm):
+    class Meta:
+        model = Do
+        fields = ("do_text",)
